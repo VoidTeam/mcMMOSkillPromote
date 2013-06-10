@@ -1,0 +1,29 @@
+#
+# mcMMO Skill Promote Configuration File
+# =====================================
+#
+# Don't use tabs in yml file!
+# 
+# If you mess this config up, feel free to delete this one, and let
+# the plugin create you a new one!
+#
+
+rank-ladder: 'titles'
+groups:
+    {group}:
+        required-skills:
+            acrobatics: 100
+            archery: 100
+            axes: 100
+            excavation: 100
+            fishing: 100
+            herbalism: 100
+            mining: 100
+            repair: 100
+            swords: 100
+            taming: 100
+            unarmed: 100
+            woodcutting: 100
+    Bowyer:
+        required-skills:
+            archery: 100

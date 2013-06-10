@@ -1,0 +1,17 @@
+author: Colby Terry - VoidTeam Network
+database: false
+description: "Promotes players automatically based on their mcMMO Skills.\r\n"
+main: net.voidteam.plugins.mcmmosp.McMMOSkillPromote
+name: mcMMO Skill Promote
+startup: postworld
+version: '0.1'
+
+commands:
+    mcmmosp:
+      description: Information about the plugin.
+      usage: /<command> info
+
+permissions:
+    mcmmosp.reload:
+        description: Allows you to reload the config.
+        default: op
