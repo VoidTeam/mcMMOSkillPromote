@@ -1,9 +1,21 @@
 package net.voidteam.plugins.mcmmosp;
 
+import java.util.Set;
+
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+
+import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
+
+import ru.tehkode.permissions.PermissionManager;
+import ru.tehkode.permissions.PermissionUser;
+import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class PlayerListener implements Listener
 {
+	public static FileConfiguration file;
 	private final McMMOSkillPromote plugin;		// Plugin instance.
 	
 	// Constructor.
@@ -21,11 +33,19 @@ public class PlayerListener implements Listener
 	
 	// On mcMMO Player Level Up.
 	// This will handle the skill caps for each specified group.
-	//@EventHandler
-	//public void onMcMMOPlayerLevelUp(McMMOPlayerLevelUpEvent e)
-	//{
-		// TODO: Handle Shit.
-	//}
+	@EventHandler
+	public void onMcMMOPlayerLevelUp(McMMOPlayerLevelUpEvent e)
+	{
+		PermissionManager pex = PermissionsEx.getPermissionManager();
+		Player player = e.getPlayer();
+		PermissionUser peplayer = pex.getUser(player);
+		String skill = e.getSkill().toString().toLowerCase();
+		int skill_level = e.getSkillLevel();
+		
+		Set groups = file.getConfigurationSection("groups").getKeys(false);
+		
+		
+	}
 	
 	// On mcMMO Player Experience Gain
 	//@EventHandler

@@ -2,6 +2,7 @@ package net.voidteam.plugins.mcmmosp;
 
 import java.io.File;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -29,6 +30,8 @@ public class McMMOSkillPromote extends JavaPlugin implements Listener
 			// Register command executor.
 			Commands cmdExecutor = new Commands(this);
 			getCommand("mcmmosp").setExecutor(cmdExecutor);
+			
+			PlayerListener.file = getConfig();
 			
 			getLogger().info("Loaded!");
 		}
