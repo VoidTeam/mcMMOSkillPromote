@@ -11,7 +11,7 @@
 rank-ladder: 'titles'
 groups:
     {group}:
-        required-skills:
+        skills:
             acrobatics: 100
             archery: 100
             axes: 100
@@ -25,5 +25,5 @@ groups:
             unarmed: 100
             woodcutting: 100
     Bowyer:
-        required-skills:
+        skills:
             archery: 100

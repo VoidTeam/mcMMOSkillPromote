@@ -40,11 +40,11 @@ public class PlayerListener implements Listener
 		Player player = e.getPlayer();
 		PermissionUser peplayer = pex.getUser(player);
 		String skill = e.getSkill().toString().toLowerCase();
-		int skill_level = e.getSkillLevel();
-		
-		Set groups = file.getConfigurationSection("groups").getKeys(false);
-		
-		
+		int skill_level = e.getSkillLevel();		
+
+		for(String key : file.getConfigurationSection("groups").getKeys(false)){
+			System.out.println("Config skill for " + key + ":" + file.getConfigurationSection("skills").getString(skill));
+		}
 	}
 	
 	// On mcMMO Player Experience Gain
