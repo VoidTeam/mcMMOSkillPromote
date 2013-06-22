@@ -1,7 +1,5 @@
 package net.voidteam.plugins.mcmmosp;
 
-import java.util.Set;
-
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
