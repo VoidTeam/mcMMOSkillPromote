@@ -38,10 +38,12 @@ public class PlayerListener implements Listener
 		Player player = e.getPlayer();
 		PermissionUser peplayer = pex.getUser(player);
 		String skill = e.getSkill().toString().toLowerCase();
-		int skill_level = e.getSkillLevel();		
+		int skill_level = e.getSkillLevel();
+		
+		player.sendMessage("HOLA!");
 
 		for(String key : file.getConfigurationSection("groups").getKeys(false)){
-			System.out.println("Config skill for " + key + ":" + file.getConfigurationSection("skills").getString(skill));
+			player.sendMessage("Config skill for " + key + ":" + file.getConfigurationSection("skills").getString(skill));
 		}
 	}
 	
