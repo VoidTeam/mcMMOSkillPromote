@@ -13,8 +13,8 @@ import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class PlayerListener implements Listener
 {
-	public static FileConfiguration file;
-	private final McMMOSkillPromote plugin;		// Plugin instance.
+	private static McMMOSkillPromote plugin;		// Plugin instance.
+	public static FileConfiguration file = plugin.getConfig();
 	
 	// Constructor.
 	public PlayerListener(McMMOSkillPromote instance)

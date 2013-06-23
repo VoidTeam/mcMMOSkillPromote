@@ -30,8 +30,6 @@ public class McMMOSkillPromote extends JavaPlugin implements Listener
 		Commands cmdExecutor = new Commands(this);
 		getCommand("mcmmosp").setExecutor(cmdExecutor);
 		
-		PlayerListener.file = getConfig();
-		
 		getLogger().info("Loaded!");
 	}
 	
