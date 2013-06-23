@@ -43,8 +43,15 @@ public class PlayerListener implements Listener
 		int skill_level = e.getSkillLevel();
 		FileConfiguration file = plugin.getConfig();
 
-		for(String key : file.getConfigurationSection("groups").getKeys(false)){
-			player.sendMessage("Config skill for " + key + ":" + file.getConfigurationSection("skills").getString(skill));
+		for(String group : file.getConfigurationSection("groups").getKeys(false))
+		{
+			for(String configSkill : file.getConfigurationSection("groups." + group + ".skills").getKeys(false))
+			{
+				if (configSkill.equals(skill))
+				{
+					player.sendMessage(ChatColor.YELLOW + "The " + group + " group contains " + skill + "!");
+				}
+			}
 		}
 	}
 	
