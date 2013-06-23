@@ -10,7 +10,9 @@ import ru.tehkode.permissions.PermissionManager;
 import ru.tehkode.permissions.PermissionUser;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
+import com.gmail.nossr50.datatypes.player.McMMOPlayer;
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
+import com.gmail.nossr50.util.player.UserManager;
 
 // Player Listener Class.
 public class PlayerListener implements Listener
@@ -39,20 +41,25 @@ public class PlayerListener implements Listener
 		
 		PermissionManager pex = PermissionsEx.getPermissionManager();
 		PermissionUser peplayer = pex.getUser(player);
+		McMMOPlayer mcmmoplayer = UserManager.getPlayer(player);
 		String skill = e.getSkill().toString().toLowerCase();
 		int skill_level = e.getSkillLevel();
 		FileConfiguration file = plugin.getConfig();
 
-		for(String group : file.getConfigurationSection("groups").getKeys(false))
-		{
-			for(String configSkill : file.getConfigurationSection("groups." + group + ".skills").getKeys(false))
+		//if (skill_level % 50 == 0) // For efficiency purposes, comment out for testing.
+		//{
+			for(String group : file.getConfigurationSection("groups").getKeys(false))
 			{
-				if (configSkill.equals(skill))
+				for(String configSkill : file.getConfigurationSection("groups." + group + ".skills").getKeys(false))
 				{
-					player.sendMessage(ChatColor.YELLOW + "The " + group + " group contains " + skill + "!");
+					int configSkillLevel = file.getInt("groups." + group + ".skills." + configSkill);
+					if (configSkill.equals(skill) && skill_level >= configSkillLevel)
+					{
+						player.sendMessage(ChatColor.AQUA + "You are eligible for the group " + group + " with " + skill + " level " + configSkillLevel + "!");
+					}
 				}
 			}
-		}
+		//}
 	}
 	
 	// On mcMMO Player Experience Gain
