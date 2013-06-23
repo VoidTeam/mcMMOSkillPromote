@@ -24,7 +24,7 @@ public class McMMOSkillPromote extends JavaPlugin implements Listener
 		
 		// Register events.
 		getServer().getPluginManager().registerEvents(this, this);
-		//getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+		getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
 		
 		// Register command executor.
 		Commands cmdExecutor = new Commands(this);
