@@ -5,6 +5,7 @@ import java.io.File;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+// Main Class.
 public class McMMOSkillPromote extends JavaPlugin implements Listener
 {
 	// On Plugin Enable.

@@ -1,20 +1,16 @@
 package net.voidteam.plugins.mcmmosp;
 
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
 
-import ru.tehkode.permissions.PermissionManager;
-import ru.tehkode.permissions.PermissionUser;
-import ru.tehkode.permissions.bukkit.PermissionsEx;
-
+// Player Listener Class.
 public class PlayerListener implements Listener
 {
-	private static McMMOSkillPromote plugin;		// Plugin instance.
-	public static FileConfiguration file = plugin.getConfig();
+	private final McMMOSkillPromote plugin;		// Plugin instance.
 	
 	// Constructor.
 	public PlayerListener(McMMOSkillPromote instance)
@@ -34,17 +30,8 @@ public class PlayerListener implements Listener
 	@EventHandler
 	public void onMcMMOPlayerLevelUp(McMMOPlayerLevelUpEvent e)
 	{
-		PermissionManager pex = PermissionsEx.getPermissionManager();
 		Player player = e.getPlayer();
-		PermissionUser peplayer = pex.getUser(player);
-		String skill = e.getSkill().toString().toLowerCase();
-		int skill_level = e.getSkillLevel();
-		
-		player.sendMessage("HOLA!");
-
-		for(String key : file.getConfigurationSection("groups").getKeys(false)){
-			player.sendMessage("Config skill for " + key + ":" + file.getConfigurationSection("skills").getString(skill));
-		}
+		player.sendMessage(ChatColor.AQUA + "HOLA!");
 	}
 	
 	// On mcMMO Player Experience Gain
