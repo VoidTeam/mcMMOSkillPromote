@@ -5,7 +5,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.scoreboard.Scoreboard;
 
 import ru.tehkode.permissions.PermissionGroup;
 import ru.tehkode.permissions.PermissionManager;
@@ -48,20 +47,22 @@ public class PlayerListener implements Listener
 		McMMOPlayer mcmmoplayer = UserManager.getPlayer(player);
 		PlayerProfile mcmmoprofile = mcmmoplayer.getProfile();
 		FileConfiguration file = plugin.getConfig();
+		int skill_level = e.getSkillLevel();
 		
 		String[] skillTypes = {"EXCAVATION", "FISHING", "HERBALISM", "MINING", "WOODCUTTING", "AXES", "ARCHERY", "SWORDS", "TAMING", "UNARMED", "ACROBATICS", "REPAIR"};
 		
-		//if (skill_level % 50 == 0) // For efficiency purposes, comment out for testing.
-		//{
+		if (skill_level % 50 == 0) // For efficiency purposes, comment out for testing.
+		{
 			
-		
+			// Get the list of groups.
 			for(String group : file.getConfigurationSection("groups").getKeys(false))
 			{
 				int total = 0;
 				int win = 0;
-				
+				// Get the list of required skills for this group.
 				for(String configSkill : file.getConfigurationSection("groups." + group + ".skills").getKeys(false))
 				{
+					// For each individual skill...
 					for (String skillType : skillTypes)
 					{
 						if (configSkill.toLowerCase().equals(skillType.toLowerCase()))
@@ -83,7 +84,7 @@ public class PlayerListener implements Listener
 				
 				if (win == total)
 				{
-					player.sendMessage(ChatColor.AQUA + "You are eligible for the " + group + " group!");
+					//player.sendMessage(ChatColor.AQUA + "You are eligible for the " + group + " group!");
 					
 					int exist = 0;
 					for(PermissionGroup pexgroup : peplayer.getGroups())
@@ -101,7 +102,7 @@ public class PlayerListener implements Listener
 					}
 				}
 			}
-		//}
+		}
 	}
 	
 	// On mcMMO Player Experience Gain
