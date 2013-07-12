@@ -4,7 +4,7 @@ description: "Promotes players automatically based on their mcMMO Skills.\r\n"
 main: net.voidteam.plugins.mcmmosp.McMMOSkillPromote
 name: mcMMOSkillPromote
 startup: postworld
-version: '0.1'
+version: '0.2'
 
 commands:
     mcmmosp:
@@ -14,4 +14,7 @@ commands:
 permissions:
     mcmmosp.reload:
         description: Allows you to reload the config.
+        default: op
+    mcmmosp.refresh:
+        description: Refreshes and adds specified player to the groups they qualify for.
         default: op
